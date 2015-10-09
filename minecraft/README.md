@@ -6,7 +6,7 @@
 * Docker Machine 0.4.1
 * Docker Compose 1.4.0
 
-## Docker Machine
+## Host
 
 ```bash
 export OS_USERNAME=your-rackspace-username
@@ -27,8 +27,36 @@ docker-machine ssh minecraft \
 eval "$(docker-machine env minecraft)"
 ```
 
-## Docker Compose
+## Run
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
+
+## Op
+
+```bash
+docker attach minecraft
+/help
+```
+
+## Mods
+
+Store your mods in the [mods](mods) directory.
+
+### Add Mod to Existing Server
+
+```bash
+docker cp mods/My_Mod_v1.1.jar minecraft:/data/mods
+docker stop minecraft
+docker start minecraft
+```
+
+## Debug
+
+```bash
+docker logs minecraft
+docker exec -it minecraft /bin/bash
+```
+
+Control-p Control-q to detach
